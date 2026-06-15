@@ -1,0 +1,103 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Logístico de Monitoreo</title>
+</head>
+<body>
+
+    <header>
+        <h1>Sistema Logístico de Monitoreo</h1>
+    </header>
+
+    <nav>
+        <a href="#inicio">Inicio</a> |
+        <a href="#quienes">Quiénes Somos</a> |
+        <a href="#servicios">Servicios</a> |
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <main>
+
+        <section id="inicio">
+            <h2>Inicio</h2>
+            <p>
+                Bienvenido al Sistema Logístico de Monitoreo. Nuestra plataforma permite rastrear y mostrar la ubicación exacta de las unidades de transporte en tiempo real, facilitando el control y la gestión eficiente de las operaciones logísticas.
+            </p>
+        </section>
+
+        <section id="quienes">
+            <h2>Quiénes Somos</h2>
+
+            <article>
+                <p>
+                    Sistema Logístico de Monitoreo es un proyecto orientado a mejorar la administración y supervisión de vehículos mediante herramientas tecnológicas modernas. La plataforma permite conocer la ubicación de las unidades en tiempo real, optimizando las rutas y fortaleciendo la seguridad de las operaciones. Nuestro propósito es brindar una solución eficiente para empresas y organizaciones que requieren un mayor control sobre sus procesos logísticos. Además, buscamos contribuir al crecimiento y desarrollo del sector del transporte mediante el uso de tecnologías innovadoras que permitan una mejor planificación y seguimiento de las actividades, garantizando un servicio confiable y una mayor satisfacción para los usuarios.
+                </p>
+
+                <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600"
+                     alt="Sistema Logístico de Monitoreo"
+                     width="500">
+            </article>
+        </section>
+
+        <section id="servicios">
+            <h2>Servicios</h2>
+
+            <ul>
+                <li>Monitoreo de vehículos en tiempo real.</li>
+                <li>Seguimiento de rutas y entregas.</li>
+                <li>Generación de reportes de ubicación.</li>
+                <li>Alertas y notificaciones de seguridad.</li>
+                <li>Optimización de operaciones logísticas.</li>
+            </ul>
+        </section>
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+
+            <p>Correo electrónico: robertreyes@gmail.com</p>
+            <p>Teléfono: 0997259998</p>
+            <p>Dirección: La Libertad, Santa Elena, Ecuador</p>
+
+            <p>
+                Redes sociales:
+                <a href="https://www.facebook.com" target="_blank">Facebook</a> |
+                <a href="https://www.instagram.com" target="_blank">Instagram</a>
+            </p>
+        </section>
+
+        <section>
+            <h2>Video Relacionado</h2>
+
+            <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/MG7Rcz1Q8j8"
+                title="Video sobre logística"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+        </section>
+
+    </main>
+
+    <aside>
+        <h3>Información Complementaria</h3>
+
+        <p><strong>Horario de atención:</strong></p>
+        <p>Lunes a Viernes de 08:00 a 17:00</p>
+
+        <p><strong>Promoción:</strong></p>
+        <p>Primer mes de monitoreo gratuito para nuevos clientes.</p>
+    </aside>
+
+    <footer>
+        <hr>
+        <p>
+            Desarrollado por Robert Reyes | Desarrollo de Aplicaciones Web | 2026
+        </p>
+    </footer>
+
+</body>
+</html>
+```
