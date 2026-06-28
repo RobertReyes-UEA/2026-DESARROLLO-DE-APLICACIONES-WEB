@@ -1,65 +1,77 @@
 const formulario = document.getElementById("formProducto");
-
 const lista = document.getElementById("listaProductos");
-
 const mensaje = document.getElementById("mensaje");
-
 const total = document.getElementById("total");
 
 let contador = 0;
 
-formulario.addEventListener("submit", function(event){
+formulario.addEventListener("submit", function (e) {
 
-event.preventDefault();
+    e.preventDefault();
 
-const nombre = document.getElementById("nombre").value.trim();
+    const nombre = document.getElementById("nombre").value.trim();
+    const descripcion = document.getElementById("descripcion").value.trim();
+    const categoria = document.getElementById("categoria").value;
 
-const descripcion = document.getElementById("descripcion").value.trim();
+    if (nombre === "" || descripcion === "" || categoria === "") {
 
-const categoria = document.getElementById("categoria").value;
+        mensaje.innerHTML =
+            `<div class="alert alert-danger">
+                Todos los campos son obligatorios.
+            </div>`;
 
-if(nombre==="" || descripcion==="" || categoria===""){
+        return;
+    }
 
-mensaje.innerHTML="<div class='alert alert-danger'>Complete todos los campos.</div>";
+    mensaje.innerHTML =
+        `<div class="alert alert-success">
+            Producto registrado correctamente.
+        </div>`;
 
-return;
+    const card = document.createElement("div");
 
-}
+    card.className = "card shadow p-3 mb-3";
 
-mensaje.innerHTML="<div class='alert alert-success'>Producto registrado correctamente.</div>";
+    card.innerHTML = `
 
-const tarjeta=document.createElement("div");
+        <div class="card-body">
 
-tarjeta.className="card p-3 m-3";
+            <h4 class="card-title text-primary">${nombre}</h4>
 
-tarjeta.innerHTML=`
-<h5>${nombre}</h5>
+            <p class="card-text">
+                <strong>Descripción:</strong>
+                ${descripcion}
+            </p>
 
-<p>${descripcion}</p>
+            <p>
+                <strong>Categoría:</strong>
+                ${categoria}
+            </p>
 
-<p><strong>Categoría:</strong> ${categoria}</p>
+            <button class="btn btn-danger eliminar">
+                Eliminar
+            </button>
 
-<button class="btn btn-danger eliminar">
-Eliminar
-</button>
-`;
+        </div>
 
-lista.appendChild(tarjeta);
+    `;
 
-contador++;
+    lista.appendChild(card);
 
-total.textContent=contador;
+    contador++;
 
-formulario.reset();
+    total.textContent = contador;
 
-tarjeta.querySelector(".eliminar").addEventListener("click",function(){
+    formulario.reset();
 
-tarjeta.remove();
+    card.querySelector(".eliminar").addEventListener("click", function () {
 
-contador--;
+        card.remove();
 
-total.textContent=contador;
+        contador--;
 
-});
+        total.textContent = contador;
+
+    });
 
 });
