@@ -1,14 +1,12 @@
-# 2026-DESARROLLO-DE-APLICACIONES-WEB
-2026-DESARROLLO DE APLICACIONES WEB
-# Proyecto Integrador U2 - Avance 1
+# Proyecto Integrador U2 - Avance 2
 
-## Sitio Web Interactivo - Café Aroma
+## Sistema Logístico de Monitoreo
 
 ## Descripción
 
-Este proyecto corresponde al **Avance 1 de la Unidad 2** de la asignatura **Desarrollo de Aplicaciones Web**. Se basa en el sitio web desarrollado en la Semana 4, incorporando funcionalidades dinámicas mediante **JavaScript**, manipulación del **DOM** y manejo de eventos.
+Este proyecto corresponde a la **Semana 6** de la asignatura **Desarrollo de Aplicaciones Web**. Consiste en la mejora de un sitio web desarrollado en las semanas anteriores, incorporando validaciones dinámicas mediante JavaScript y manejo de formularios sin recargar la página.
 
-El sitio representa una cafetería ficticia llamada **Café Aroma**, donde los usuarios pueden registrar productos desde un formulario y visualizarlos en la misma página sin necesidad de recargar el navegador.
+El sistema permite registrar vehículos de una empresa de transporte, validando la información ingresada antes de almacenarla y mostrando los registros de forma dinámica.
 
 ## Tecnologías utilizadas
 
@@ -21,38 +19,33 @@ El sitio representa una cafetería ficticia llamada **Café Aroma**, donde los u
 
 ## Funcionalidades implementadas
 
-* Menú de navegación responsivo con Bootstrap.
-* Diseño adaptable para computadoras, tabletas y celulares.
-* Formulario para registrar productos.
+* Diseño responsivo con Bootstrap.
+* Formulario para registrar vehículos.
+* Validaciones dinámicas en tiempo real utilizando los eventos **input**, **blur** y **submit**.
 * Validación de campos obligatorios.
+* Validación de longitud mínima para la placa y la descripción.
+* Validación de selección del tipo de vehículo.
 * Mensajes dinámicos de éxito y error.
-* Creación de tarjetas de productos utilizando JavaScript.
-* Manipulación del DOM mediante `createElement()` y `appendChild()`.
-* Manejo de eventos con `addEventListener()`.
-* Uso de `preventDefault()` para evitar la recarga de la página.
-* Eliminación de productos registrados.
-* Contador automático del total de productos registrados.
+* Uso de las clases de Bootstrap **is-valid**, **is-invalid**, **alert-success** y **alert-danger**.
+* Manipulación del DOM mediante JavaScript.
+* Registro de vehículos sin recargar la página utilizando **preventDefault()**.
+* Creación dinámica de tarjetas con **createElement()** y **appendChild()**.
+* Eliminación de registros mediante botones y eventos **click**.
+* Contador automático del total de vehículos registrados.
 
 ## Estructura del proyecto
 
 ```text
-sitio-web-bootstrap/
+Sistema-Logistico-Monitoreo/
 │── index.html
+│── style.css
 │── script.js
 │── README.md
 ```
 
-## Ejemplo de productos registrados
-
-* Espresso
-* Capuccino
-* Cheesecake
-* Frapuccino
-* Combo Desayuno
-
 ## Objetivo del proyecto
 
-Aplicar los fundamentos de JavaScript para desarrollar una página web interactiva que permita registrar, mostrar, contar y eliminar información dinámicamente utilizando el DOM y eventos.
+Desarrollar una aplicación web interactiva que permita registrar, validar, mostrar, contar y eliminar vehículos de forma dinámica, aplicando JavaScript, manipulación del DOM, eventos y estilos con Bootstrap.
 
 ## Autor
 
@@ -61,3 +54,8 @@ Aplicar los fundamentos de JavaScript para desarrollar una página web interacti
 ## Asignatura
 
 Desarrollo de Aplicaciones Web
+
+## Publicación
+
+El proyecto se encuentra alojado en **GitHub** y publicado mediante **GitHub Pages**.
+
