@@ -1,0 +1,142 @@
+/* =========================
+   Estilos Generales
+========================= */
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* =========================
+   Encabezado
+========================= */
+
+header{
+    background-color: #0d6efd;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* =========================
+   Navegación
+========================= */
+
+nav{
+    background-color: #212529;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover{
+    color: #ffc107;
+}
+
+/* =========================
+   Secciones
+========================= */
+
+section{
+    margin-top: 30px;
+}
+
+h2{
+    color: #0d6efd;
+}
+
+/* =========================
+   Tarjetas
+========================= */
+
+.card{
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,.2);
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: scale(1.02);
+}
+
+/* =========================
+   Formularios
+========================= */
+
+.form-control{
+    margin-bottom: 10px;
+}
+
+textarea{
+    resize: none;
+}
+
+small{
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* =========================
+   Validaciones
+========================= */
+
+.is-valid{
+    border: 2px solid #198754 !important;
+}
+
+.is-invalid{
+    border: 2px solid #dc3545 !important;
+}
+
+/* =========================
+   Botones
+========================= */
+
+.btn{
+    margin-right: 10px;
+}
+
+/* =========================
+   Footer
+========================= */
+
+footer{
+    background-color: #212529;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width:768px){
+
+    header h1{
+        font-size: 24px;
+    }
+
+    nav{
+        padding: 15px;
+    }
+
+    nav a{
+        display: block;
+        margin: 10px 0;
+    }
+
+    .container{
+        padding: 15px;
+    }
+
+}
