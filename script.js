@@ -1,62 +1,127 @@
 const formulario = document.getElementById("formProducto");
+
+const nombre = document.getElementById("nombre");
+const descripcion = document.getElementById("descripcion");
+const categoria = document.getElementById("categoria");
+
 const lista = document.getElementById("listaProductos");
 const mensaje = document.getElementById("mensaje");
 const total = document.getElementById("total");
 
 let contador = 0;
 
+// Validar placa
+function validarNombre() {
+
+    if (nombre.value.trim().length < 3) {
+
+        nombre.classList.add("is-invalid");
+        nombre.classList.remove("is-valid");
+
+        document.getElementById("errorNombre").textContent =
+            "La placa debe tener al menos 3 caracteres.";
+
+        return false;
+    }
+
+    nombre.classList.remove("is-invalid");
+    nombre.classList.add("is-valid");
+
+    document.getElementById("errorNombre").textContent = "";
+
+    return true;
+}
+
+// Validar descripción
+function validarDescripcion() {
+
+    if (descripcion.value.trim().length < 10) {
+
+        descripcion.classList.add("is-invalid");
+        descripcion.classList.remove("is-valid");
+
+        document.getElementById("errorDescripcion").textContent =
+            "La descripción debe contener al menos 10 caracteres.";
+
+        return false;
+    }
+
+    descripcion.classList.remove("is-invalid");
+    descripcion.classList.add("is-valid");
+
+    document.getElementById("errorDescripcion").textContent = "";
+
+    return true;
+}
+
+// Validar categoría
+function validarCategoria() {
+
+    if (categoria.value === "") {
+
+        categoria.classList.add("is-invalid");
+        categoria.classList.remove("is-valid");
+
+        document.getElementById("errorCategoria").textContent =
+            "Seleccione un tipo de vehículo.";
+
+        return false;
+    }
+
+    categoria.classList.remove("is-invalid");
+    categoria.classList.add("is-valid");
+
+    document.getElementById("errorCategoria").textContent = "";
+
+    return true;
+}
+
+// Eventos en tiempo real
+nombre.addEventListener("input", validarNombre);
+nombre.addEventListener("blur", validarNombre);
+
+descripcion.addEventListener("input", validarDescripcion);
+descripcion.addEventListener("blur", validarDescripcion);
+
+categoria.addEventListener("change", validarCategoria);
+
+// Registrar vehículo
 formulario.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
-    const nombre = document.getElementById("nombre").value.trim();
-    const descripcion = document.getElementById("descripcion").value.trim();
-    const categoria = document.getElementById("categoria").value;
+    const nombreValido = validarNombre();
+    const descripcionValida = validarDescripcion();
+    const categoriaValida = validarCategoria();
 
-    if (nombre === "" || descripcion === "" || categoria === "") {
+    if (!(nombreValido && descripcionValida && categoriaValida)) {
 
         mensaje.innerHTML =
-            `<div class="alert alert-danger">
-                Todos los campos son obligatorios.
-            </div>`;
+            "<div class='alert alert-danger'>Corrija los errores antes de registrar el vehículo.</div>";
 
         return;
     }
 
     mensaje.innerHTML =
-        `<div class="alert alert-success">
-            Producto registrado correctamente.
-        </div>`;
+        "<div class='alert alert-success'>Vehículo registrado correctamente.</div>";
 
-    const card = document.createElement("div");
+    const tarjeta = document.createElement("div");
 
-    card.className = "card shadow p-3 mb-3";
+    tarjeta.className = "card p-3 mt-3 shadow";
 
-    card.innerHTML = `
+    tarjeta.innerHTML = `
+        <h4>${nombre.value}</h4>
 
-        <div class="card-body">
+        <p><strong>Descripción:</strong> ${descripcion.value}</p>
 
-            <h4 class="card-title text-primary">${nombre}</h4>
+        <p><strong>Tipo:</strong> ${categoria.value}</p>
 
-            <p class="card-text">
-                <strong>Descripción:</strong>
-                ${descripcion}
-            </p>
-
-            <p>
-                <strong>Categoría:</strong>
-                ${categoria}
-            </p>
-
-            <button class="btn btn-danger eliminar">
-                Eliminar
-            </button>
-
-        </div>
-
+        <button class="btn btn-danger eliminar">
+            Eliminar
+        </button>
     `;
 
-    lista.appendChild(card);
+    lista.appendChild(tarjeta);
 
     contador++;
 
@@ -64,9 +129,13 @@ formulario.addEventListener("submit", function (e) {
 
     formulario.reset();
 
-    card.querySelector(".eliminar").addEventListener("click", function () {
+    nombre.classList.remove("is-valid");
+    descripcion.classList.remove("is-valid");
+    categoria.classList.remove("is-valid");
 
-        card.remove();
+    tarjeta.querySelector(".eliminar").addEventListener("click", function () {
+
+        tarjeta.remove();
 
         contador--;
 
