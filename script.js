@@ -101,46 +101,69 @@ formulario.addEventListener("submit", function (e) {
 
         return;
     }
+let vehiculos = [];
+   function renderizarVehiculos(){
 
-    mensaje.innerHTML =
-        "<div class='alert alert-success'>Vehículo registrado correctamente.</div>";
+    lista.innerHTML = "";
 
-    const tarjeta = document.createElement("div");
+    if(vehiculos.length === 0){
 
-    tarjeta.className = "card p-3 mt-3 shadow";
+        lista.innerHTML = `
+        <div class="alert alert-warning">
+            No existen vehículos registrados.
+        </div>
+        `;
 
-    tarjeta.innerHTML = `
-        <h4>${nombre.value}</h4>
+        total.textContent = 0;
 
-        <p><strong>Descripción:</strong> ${descripcion.value}</p>
+        return;
 
-        <p><strong>Tipo:</strong> ${categoria.value}</p>
+    }
+
+    vehiculos.forEach((vehiculo, indice)=>{
+
+        const card = document.createElement("div");
+
+        card.className="card p-3 mt-3 shadow";
+
+        card.innerHTML=`
+
+        <h4>${vehiculo.placa}</h4>
+
+        <p><strong>Descripción:</strong> ${vehiculo.descripcion}</p>
+
+        <p><strong>Tipo:</strong> ${vehiculo.tipo}</p>
 
         <button class="btn btn-danger eliminar">
             Eliminar
         </button>
-    `;
 
-    lista.appendChild(tarjeta);
+        `;
 
-    contador++;
+        card.querySelector(".eliminar").addEventListener("click",function(){
 
-    total.textContent = contador;
+            vehiculos.splice(indice,1);
 
-    formulario.reset();
+            renderizarVehiculos();
 
-    nombre.classList.remove("is-valid");
-    descripcion.classList.remove("is-valid");
-    categoria.classList.remove("is-valid");
+        });
 
-    tarjeta.querySelector(".eliminar").addEventListener("click", function () {
-
-        tarjeta.remove();
-
-        contador--;
-
-        total.textContent = contador;
+        lista.appendChild(card);
 
     });
 
+    total.textContent = vehiculos.length;
+
+vehiculos.push({
+
+    placa:nombre.value,
+
+    descripcion:descripcion.value,
+
+    tipo:categoria.value
+
 });
+
+renderizarVehiculos();
+
+formulario.reset();
