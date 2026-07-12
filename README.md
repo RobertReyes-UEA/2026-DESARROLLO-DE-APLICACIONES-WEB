@@ -32,6 +32,22 @@ El sistema permite registrar vehículos de una empresa de transporte, validando 
 * Creación dinámica de tarjetas con **createElement()** y **appendChild()**.
 * Eliminación de registros mediante botones y eventos **click**.
 * Contador automático del total de vehículos registrados.
+## Nuevas funcionalidades
+
+En esta actualización se reorganizó el proyecto pensando en una futura integración con Flask mediante plantillas reutilizables.
+
+### Mejoras implementadas
+
+- Organización de la interfaz mediante secciones reutilizables.
+- Preparación para una futura plantilla `base.html`.
+- Uso de un arreglo (`vehiculos[]`) para almacenar la información.
+- Uso de objetos JavaScript para representar cada vehículo.
+- Renderizado dinámico de tarjetas mediante la función `renderizarVehiculos()`.
+- Implementación de estructuras repetitivas (`forEach`) para mostrar los registros.
+- Uso de estructuras condicionales (`if`) para mostrar mensajes cuando no existen vehículos registrados.
+- Conservación de las validaciones dinámicas desarrolladas en la Semana 6.
+- Posibilidad de registrar y eliminar vehículos sin recargar la página.
+- Diseño responsivo utilizando Bootstrap y CSS personalizado.
 
 ## Estructura del proyecto
 
