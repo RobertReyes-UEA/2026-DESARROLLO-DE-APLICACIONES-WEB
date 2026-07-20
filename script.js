@@ -8,9 +8,14 @@ const lista = document.getElementById("listaProductos");
 const mensaje = document.getElementById("mensaje");
 const total = document.getElementById("total");
 
-let contador = 0;
+const spinner = document.getElementById("spinner");
 
-// Validar placa
+let vehiculos = [];
+
+/* ===========================
+   VALIDACIONES
+=========================== */
+
 function validarNombre() {
 
     if (nombre.value.trim().length < 3) {
@@ -18,7 +23,7 @@ function validarNombre() {
         nombre.classList.add("is-invalid");
         nombre.classList.remove("is-valid");
 
-        document.getElementById("errorNombre").textContent =
+        errorNombre.textContent =
             "La placa debe tener al menos 3 caracteres.";
 
         return false;
@@ -27,12 +32,11 @@ function validarNombre() {
     nombre.classList.remove("is-invalid");
     nombre.classList.add("is-valid");
 
-    document.getElementById("errorNombre").textContent = "";
+    errorNombre.textContent = "";
 
     return true;
 }
 
-// Validar descripción
 function validarDescripcion() {
 
     if (descripcion.value.trim().length < 10) {
@@ -40,8 +44,8 @@ function validarDescripcion() {
         descripcion.classList.add("is-invalid");
         descripcion.classList.remove("is-valid");
 
-        document.getElementById("errorDescripcion").textContent =
-            "La descripción debe contener al menos 10 caracteres.";
+        errorDescripcion.textContent =
+            "La descripción debe contener mínimo 10 caracteres.";
 
         return false;
     }
@@ -49,20 +53,19 @@ function validarDescripcion() {
     descripcion.classList.remove("is-invalid");
     descripcion.classList.add("is-valid");
 
-    document.getElementById("errorDescripcion").textContent = "";
+    errorDescripcion.textContent = "";
 
     return true;
 }
 
-// Validar categoría
 function validarCategoria() {
 
-    if (categoria.value === "") {
+    if (categoria.value == "") {
 
         categoria.classList.add("is-invalid");
         categoria.classList.remove("is-valid");
 
-        document.getElementById("errorCategoria").textContent =
+        errorCategoria.textContent =
             "Seleccione un tipo de vehículo.";
 
         return false;
@@ -71,12 +74,15 @@ function validarCategoria() {
     categoria.classList.remove("is-invalid");
     categoria.classList.add("is-valid");
 
-    document.getElementById("errorCategoria").textContent = "";
+    errorCategoria.textContent = "";
 
     return true;
 }
 
-// Eventos en tiempo real
+/* ===========================
+   EVENTOS
+=========================== */
+
 nombre.addEventListener("input", validarNombre);
 nombre.addEventListener("blur", validarNombre);
 
@@ -85,85 +91,125 @@ descripcion.addEventListener("blur", validarDescripcion);
 
 categoria.addEventListener("change", validarCategoria);
 
-// Registrar vehículo
-formulario.addEventListener("submit", function (e) {
+/* ===========================
+   RENDERIZAR VEHÍCULOS
+=========================== */
 
-    e.preventDefault();
-
-    const nombreValido = validarNombre();
-    const descripcionValida = validarDescripcion();
-    const categoriaValida = validarCategoria();
-
-    if (!(nombreValido && descripcionValida && categoriaValida)) {
-
-        mensaje.innerHTML =
-            "<div class='alert alert-danger'>Corrija los errores antes de registrar el vehículo.</div>";
-
-        return;
-    }
-let vehiculos = [];
-   function renderizarVehiculos(){
+function renderizarVehiculos() {
 
     lista.innerHTML = "";
 
-    if(vehiculos.length === 0){
+    if (vehiculos.length === 0) {
 
         lista.innerHTML = `
         <div class="alert alert-warning">
             No existen vehículos registrados.
-        </div>
-        `;
+        </div>`;
 
         total.textContent = 0;
 
         return;
-
     }
 
-    vehiculos.forEach((vehiculo, indice)=>{
+    vehiculos.forEach((vehiculo, indice) => {
 
-        const card = document.createElement("div");
+        const columna = document.createElement("div");
 
-        card.className="card p-3 mt-3 shadow";
+        columna.className = "col-md-4 mb-3";
 
-        card.innerHTML=`
+        columna.innerHTML = `
 
-        <h4>${vehiculo.placa}</h4>
+        <div class="card shadow h-100">
 
-        <p><strong>Descripción:</strong> ${vehiculo.descripcion}</p>
+            <div class="card-body">
 
-        <p><strong>Tipo:</strong> ${vehiculo.tipo}</p>
+                <h5 class="card-title">
+                    ${vehiculo.placa}
+                </h5>
 
-        <button class="btn btn-danger eliminar">
-            Eliminar
-        </button>
+                <p class="card-text">
+                    <strong>Descripción:</strong><br>
+                    ${vehiculo.descripcion}
+                </p>
+
+                <p>
+                    <strong>Tipo:</strong>
+                    ${vehiculo.tipo}
+                </p>
+
+                <button class="btn btn-danger eliminar">
+                    Eliminar
+                </button>
+
+            </div>
+
+        </div>
 
         `;
 
-        card.querySelector(".eliminar").addEventListener("click",function(){
+        columna.querySelector(".eliminar").addEventListener("click", function () {
 
-            vehiculos.splice(indice,1);
+            vehiculos.splice(indice, 1);
 
             renderizarVehiculos();
 
         });
 
-        lista.appendChild(card);
+        lista.appendChild(columna);
 
     });
 
     total.textContent = vehiculos.length;
 
-vehiculos.push({
+}
 
-    placa:nombre.value,
+/* ===========================
+   REGISTRAR
+=========================== */
 
-    descripcion:descripcion.value,
+formulario.addEventListener("submit", function (e) {
 
-    tipo:categoria.value
+    e.preventDefault();
+
+    if (!(validarNombre() && validarDescripcion() && validarCategoria())) {
+
+        mensaje.innerHTML = `
+        <div class="alert alert-danger">
+            Corrija los errores antes de continuar.
+        </div>`;
+
+        return;
+    }
+
+    spinner.style.display = "block";
+
+    setTimeout(() => {
+
+        vehiculos.push({
+
+            placa: nombre.value,
+
+            descripcion: descripcion.value,
+
+            tipo: categoria.value
+
+        });
+
+        spinner.style.display = "none";
+
+        mensaje.innerHTML = `
+        <div class="alert alert-success">
+            Vehículo registrado correctamente.
+        </div>`;
+
+        renderizarVehiculos();
+
+        formulario.reset();
+
+        nombre.classList.remove("is-valid");
+        descripcion.classList.remove("is-valid");
+        categoria.classList.remove("is-valid");
+
+    }, 1000);
 
 });
-
-renderizarVehiculos();
-
-formulario.reset();
