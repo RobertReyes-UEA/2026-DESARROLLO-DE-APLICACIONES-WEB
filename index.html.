@@ -1,231 +1,494 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
-<head> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Logístico de Monitoreo</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header>
+<!-- Futuro base.html -->
+
+<!-- Encabezado reutilizable -->
+<header class="bg-primary text-white text-center py-4">
+
+    <div class="container">
+
         <h1>Sistema Logístico de Monitoreo</h1>
-    </header>
 
-    <nav>
-        <a href="#inicio">Inicio</a> |
-        <a href="#quienes">Quiénes Somos</a> |
-        <a href="#servicios">Servicios</a> |
-        <a href="#contacto">Contacto</a>
-    </nav>
-
-    <main>
-
-        <section id="inicio">
-            <h2>Inicio</h2>
-            <p>
-                Bienvenido al Sistema Logístico de Monitoreo. Nuestra plataforma permite rastrear y mostrar la ubicación exacta de las unidades de transporte en tiempo real, facilitando el control y la gestión eficiente de las operaciones logísticas.
-            </p>
-        </section>
-
-        <section id="quienes">
-            <h2>Quiénes Somos</h2>
-
-            <article>
-                <p>
-                    Sistema Logístico de Monitoreo es un proyecto orientado a mejorar la administración y supervisión de vehículos mediante herramientas tecnológicas modernas. La plataforma permite conocer la ubicación de las unidades en tiempo real, optimizando las rutas y fortaleciendo la seguridad de las operaciones. Nuestro propósito es brindar una solución eficiente para empresas y organizaciones que requieren un mayor control sobre sus procesos logísticos. Además, buscamos contribuir al crecimiento y desarrollo del sector del transporte mediante el uso de tecnologías innovadoras que permitan una mejor planificación y seguimiento de las actividades, garantizando un servicio confiable y una mayor satisfacción para los usuarios.
-                </p>
-
-                <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600"
-                     alt="Sistema Logístico de Monitoreo"
-                     width="500">
-            </article>
-        </section>
-
-        <section id="servicios">
-            <h2>Servicios</h2>
-
-            <ul>
-                <li>Monitoreo de vehículos en tiempo real.</li>
-                <li>Seguimiento de rutas y entregas.</li>
-                <li>Generación de reportes de ubicación.</li>
-                <li>Alertas y notificaciones de seguridad.</li>
-                <li>Optimización de operaciones logísticas.</li>
-            </ul>
-        </section>
-
-        <section id="contacto">
-            <h2>Contacto</h2>
-
-            <p>Correo electrónico: robertreyes@gmail.com</p>
-            <p>Teléfono: 0997259998</p>
-            <p>Dirección: La Libertad, Santa Elena, Ecuador</p>
-
-            <p>
-                Redes sociales:
-                <a href="https://www.facebook.com" target="_blank">Facebook</a> |
-                <a href="https://www.instagram.com" target="_blank">Instagram</a>
-            </p>
-        </section>
-
-        <section>
-            <h2>Video Relacionado</h2>
-
-            <iframe width="560" height="315"
-                src="https://www.youtube.com/embed/MG7Rcz1Q8j8"
-                title="Video sobre logística"
-                frameborder="0"
-                allowfullscreen>
-            </iframe>
-        </section>
-
-    </main>
-
-    <aside>
-        <h3>Información Complementaria</h3>
-
-        <p><strong>Horario de atención:</strong></p>
-        <p>Lunes a Viernes de 08:00 a 17:00</p>
-
-        <p><strong>Promoción:</strong></p>
-        <p>Primer mes de monitoreo gratuito para nuevos clientes.</p>
-    </aside>
-
-    <footer>
-        <hr>
-        <p>
-            Desarrollado por Robert Reyes | Desarrollo de Aplicaciones Web | 2026
+        <p class="lead">
+            Plataforma para el monitoreo y control de vehículos en tiempo real.
         </p>
-    </footer>
 
-</body>
-</html>
-```
-<section class="container my-5">
+    </div>
 
-    <h2 class="text-center mb-4">Registro de Vehículos</h2>
+</header>
+
+<!-- Menú reutilizable -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+<div class="container">
+
+<a class="navbar-brand" href="#">
+Logística
+</a>
+
+<button class="navbar-toggler"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#menu">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="#inicio">Inicio</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#quienes">Quiénes Somos</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#servicios">Servicios</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#registro">Registro</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#contacto">Contacto</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- Contenido dinámico -->
+<main>
+
+<!-- =================== -->
+<!-- INICIO -->
+<!-- =================== -->
+
+<section id="inicio" class="container py-5">
+
+<div class="row align-items-center">
+
+<div class="col-md-6">
+
+<h2 class="text-primary">
+Bienvenido
+</h2>
+
+<p>
+
+Nuestro sistema permite monitorear vehículos, registrar información de las unidades de transporte y mejorar el control logístico mediante herramientas tecnológicas modernas.
+
+</p>
+
+<button
+class="btn btn-primary"
+data-bs-toggle="modal"
+data-bs-target="#modalInfo">
+
+Más información
+
+</button>
+
+</div>
+
+<div class="col-md-6 text-center">
+
+<img
+src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=700"
+class="img-fluid rounded shadow"
+alt="Logística">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =================== -->
+<!-- QUIÉNES SOMOS -->
+<!-- =================== -->
+
+<section id="quienes" class="container py-5">
+
+<div class="row">
+
+<div class="col-md-6">
+
+<img
+src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=700"
+class="img-fluid rounded shadow"
+alt="Empresa">
+
+</div>
+
+<div class="col-md-6">
+
+<h2 class="text-primary">
+
+Quiénes Somos
+
+</h2>
+
+<p>
+
+Somos una organización enfocada en brindar soluciones tecnológicas para empresas de transporte, permitiendo controlar rutas, vehículos y procesos logísticos de forma eficiente.
+
+</p>
+
+<p>
+
+Nuestro objetivo es optimizar el seguimiento de vehículos mediante herramientas modernas que permitan mejorar la seguridad, reducir tiempos de entrega y facilitar la toma de decisiones.
+
+</p>
+
+</div>
+
+</div>
+
+<section id="servicios" class="container py-5">
+
+    <h2 class="text-center text-primary mb-4">
+        Nuestros Servicios
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card h-100 shadow">
+
+                <div class="card-body text-center">
+
+                    <h5 class="card-title">
+                        Monitoreo GPS
+                    </h5>
+
+                    <p class="card-text">
+                        Seguimiento en tiempo real de cada vehículo mediante tecnología GPS.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card h-100 shadow">
+
+                <div class="card-body text-center">
+
+                    <h5 class="card-title">
+                        Reportes
+                    </h5>
+
+                    <p class="card-text">
+                        Generación automática de reportes para controlar rutas y recorridos.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card h-100 shadow">
+
+                <div class="card-body text-center">
+
+                    <h5 class="card-title">
+                        Alertas
+                    </h5>
+
+                    <p class="card-text">
+                        Notificaciones automáticas para eventos importantes del vehículo.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACTO -->
+
+<section id="contacto" class="container py-5">
+
+    <h2 class="text-primary">
+        Contacto
+    </h2>
+
+    <p><strong>Correo:</strong> boby38reyesn@gmail.com</p>
+
+    <p><strong>Teléfono:</strong> 0997259998</p>
+
+    <p><strong>Dirección:</strong> La Libertad - Santa Elena</p>
+
+</section>
+
+<!-- REGISTRO DE VEHÍCULOS -->
+
+<section id="registro" class="container py-5">
+
+    <h2 class="text-center text-primary mb-4">
+        Registro de Vehículos
+    </h2>
 
     <form id="formProducto">
 
-        <div class="mb-3">
-            <label class="form-label">Placa del Vehículo</label>
-            <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: GSA-1234">
-            <small id="errorNombre" class="text-danger"></small>
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                    Placa
+                </label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    class="form-control"
+                    placeholder="Ejemplo: GSA-1234">
+
+                <small
+                    id="errorNombre"
+                    class="text-danger">
+                </small>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                    Tipo de Vehículo
+                </label>
+
+                <select
+                    id="categoria"
+                    class="form-control">
+
+                    <option value="">
+                        Seleccione
+                    </option>
+
+                    <option>
+                        Camión
+                    </option>
+
+                    <option>
+                        Furgón
+                    </option>
+
+                    <option>
+                        Camioneta
+                    </option>
+
+                    <option>
+                        Motocicleta
+                    </option>
+
+                </select>
+
+                <small
+                    id="errorCategoria"
+                    class="text-danger">
+                </small>
+
+            </div>
+
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Descripción</label>
-            <textarea id="descripcion" class="form-control" placeholder="Ejemplo: Camión de carga pesada"></textarea>
-            <small id="errorDescripcion" class="text-danger"></small>
-        </div>
 
-        <div class="mb-3">
-            <label class="form-label">Tipo de Vehículo</label>
+            <label class="form-label">
+                Descripción
+            </label>
 
-            <select id="categoria" class="form-control">
+            <textarea
+                id="descripcion"
+                class="form-control"
+                rows="3"
+                placeholder="Descripción del vehículo"></textarea>
 
-                <option value="">Seleccione</option>
-                <option>Camión</option>
-                <option>Furgón</option>
-                <option>Camioneta</option>
-                <option>Motocicleta</option>
-
-            </select>
-
-            <small id="errorCategoria" class="text-danger"></small>
+            <small
+                id="errorDescripcion"
+                class="text-danger">
+            </small>
 
         </div>
 
-        <button class="btn btn-success">
+        <button
+            class="btn btn-success"
+            type="submit">
+
             Registrar Vehículo
+
         </button>
 
     </form>
 
     <div id="mensaje" class="mt-3"></div>
 
+    <!-- Spinner -->
+
+    <div
+        id="spinner"
+        class="text-center mt-4"
+        style="display:none;">
+
+        <div
+            class="spinner-border text-primary">
+
+        </div>
+
+    </div>
+
     <hr>
 
     <h4>
+
         Vehículos registrados:
-        <span id="total">0</span>
+
+        <span id="total">
+
+            0
+
+        </span>
+
     </h4>
 
-    <div id="listaProductos"></div>
+    <div
+        id="listaProductos"
+        class="row">
+
+    </div>
 
 </section>
 
-  script>
+</main>
+
+<!-- Información adicional -->
+
+<aside class="container py-4">
+
+    <div class="alert alert-info">
+
+        <strong>Horario:</strong>
+
+        Lunes a Viernes de 08:00 a 17:00
+
+    </div>
+
+</aside>
+
+<!-- Pie reutilizable -->
+
+<footer class="bg-dark text-white text-center p-4">
+
+    <p>
+
+        Desarrollado por Robert Reyes
+
+    </p>
+
+    <p>
+
+        Desarrollo de Aplicaciones Web - 2026
+
+    </p>
+
+</footer>
+
+<!-- Modal -->
+
+<div
+class="modal fade"
+id="modalInfo">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5 class="modal-title">
+
+Sistema Logístico de Monitoreo
+
+</h5>
+
+<button
+class="btn-close"
+data-bs-dismiss="modal">
+
+</button>
+
+</div>
+
+<div class="modal-body">
+
+Este proyecto demuestra el uso de HTML5, CSS3, Bootstrap y JavaScript para gestionar el registro dinámico de vehículos, preparándolo para una futura integración con Flask y bases de datos.
+
+</div>
+
+<div class="modal-footer">
+
+<button
+class="btn btn-primary"
+data-bs-dismiss="modal">
+
+Cerrar
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Bootstrap JS -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript -->
+
 <script src="script.js"></script>
-
-<!-- Futuro base.html -->
-
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Logístico de Monitoreo</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-    <!-- Encabezado reutilizable -->
-    <header>
-        <h1>Sistema Logístico de Monitoreo</h1>
-    </header>
-
-    <!-- Menú de navegación reutilizable -->
-    <nav>
-        <a href="#inicio">Inicio</a> |
-        <a href="#quienes">Quiénes Somos</a> |
-        <a href="#servicios">Servicios</a> |
-        <a href="#contacto">Contacto</a>
-    </nav>
-
-    <!-- Contenido dinámico -->
-    <main>
-
-        <!-- Aquí permanecen todas las secciones:
-             Inicio
-             Quiénes Somos
-             Servicios
-             Contacto
-             Registro de Vehículos
-        -->
-
-    </main>
-
-    <aside>
-
-        <h3>Información Complementaria</h3>
-
-        <p><strong>Horario:</strong> Lunes a Viernes de 08:00 a 17:00</p>
-
-    </aside>
-
-    <!-- Pie de página reutilizable -->
-    <footer>
-
-        <p>
-            Desarrollado por Robert Reyes | Desarrollo de Aplicaciones Web | 2026
-        </p>
-
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
 
 </body>
 
 </html>
-
