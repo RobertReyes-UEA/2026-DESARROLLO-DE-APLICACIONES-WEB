@@ -49,6 +49,16 @@ En esta actualización se reorganizó el proyecto pensando en una futura integra
 - Posibilidad de registrar y eliminar vehículos sin recargar la página.
 - Diseño responsivo utilizando Bootstrap y CSS personalizado.
 
+## Se incorporaron componentes de Bootstrap:
+
+- Navbar responsiva.
+- Sistema de rejillas.
+- Cards.
+- Formularios Bootstrap.
+- Alertas.
+- Modal.
+- Spinner.
+- Diseño adaptable.
 ## Estructura del proyecto
 
 ```text
