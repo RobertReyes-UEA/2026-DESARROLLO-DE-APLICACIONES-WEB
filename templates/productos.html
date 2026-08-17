@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+Productos
+{% endblock %}
+
+{% block content %}
+
+<h2 class="text-primary mb-4">
+    Productos y Servicios
+</h2>
+
+<div class="row">
+
+{% for producto in productos %}
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card shadow h-100">
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    {{ producto.nombre }}
+                </h5>
+
+                <p class="card-text">
+                    {{ producto.descripcion }}
+                </p>
+
+                <span class="badge bg-primary">
+                    {{ producto.categoria }}
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
