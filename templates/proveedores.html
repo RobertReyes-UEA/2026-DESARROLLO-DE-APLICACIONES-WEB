@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+Proveedores
+{% endblock %}
+
+{% block content %}
+
+<h2 class="text-primary mb-4">
+    Proveedores
+</h2>
+
+<div class="row">
+
+{% for proveedor in proveedores %}
+
+<div class="col-md-4 mb-4">
+
+    <div class="card shadow h-100">
+
+        <div class="card-body">
+
+            <h5>
+                {{ proveedor.empresa }}
+            </h5>
+
+            <p>
+                <strong>Servicio:</strong>
+                {{ proveedor.servicio }}
+            </p>
+
+            <p>
+                <strong>Teléfono:</strong>
+                {{ proveedor.telefono }}
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
