@@ -10,12 +10,13 @@ El sistema permite registrar vehículos de una empresa de transporte, validando 
 
 ## Tecnologías utilizadas
 
-* HTML5
-* CSS3
-* Bootstrap 5
-* JavaScript
-* GitHub
-* GitHub Pages
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap 5
+- Python
+- Flask
+- Jinja2
 
 ## Funcionalidades implementadas
 
@@ -60,14 +61,23 @@ En esta actualización se reorganizó el proyecto pensando en una futura integra
 - Spinner.
 - Diseño adaptable.
 ## Estructura del proyecto
-
 ```text
-Sistema-Logistico-Monitoreo/
-│── index.html
-│── style.css
-│── script.js
-│── README.md
-```
+app.py
+
+templates/
+    base.html
+    index.html
+    productos.html
+    clientes.html
+    proveedores.html
+    facturacion.html
+
+static/
+    css/
+        style.css
+    js/
+        script.js
+    img/
 
 ## Objetivo del proyecto
 
