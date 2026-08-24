@@ -5,13 +5,16 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>
+
         {% block title %}
         Sistema Logístico de Monitoreo
         {% endblock %}
+
     </title>
 
     <link
@@ -25,6 +28,7 @@
 </head>
 
 <body>
+
 
 <header class="bg-primary text-white text-center p-4">
 
@@ -43,104 +47,12 @@
 </header>
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!-- Componente reutilizable de navegación -->
 
-    <div class="container">
-
-        <a
-            class="navbar-brand"
-            href="{{ url_for('inicio') }}">
-
-            Logística
-
-        </a>
-
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#menu">
-
-            <span class="navbar-toggler-icon"></span>
-
-        </button>
-
-        <div
-            class="collapse navbar-collapse"
-            id="menu">
-
-            <ul class="navbar-nav ms-auto">
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="{{ url_for('inicio') }}">
-
-                        Inicio
-
-                    </a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="{{ url_for('productos') }}">
-
-                        Productos
-
-                    </a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="{{ url_for('clientes') }}">
-
-                        Clientes
-
-                    </a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="{{ url_for('proveedores') }}">
-
-                        Proveedores
-
-                    </a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="{{ url_for('facturacion') }}">
-
-                        Facturación
-
-                    </a>
-
-                </li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-</nav>
+{% include "components/navbar.html" %}
 
 
-<main class="container py-4">
+<main class="container py-5">
 
     {% block content %}
 
@@ -149,17 +61,9 @@
 </main>
 
 
-<footer class="bg-dark text-white text-center p-4 mt-5">
+<!-- Componente reutilizable de pie de página -->
 
-    <p>
-        Desarrollado por Robert Reyes
-    </p>
-
-    <p>
-        Desarrollo de Aplicaciones Web - 2026
-    </p>
-
-</footer>
+{% include "components/footer.html" %}
 
 
 <script
