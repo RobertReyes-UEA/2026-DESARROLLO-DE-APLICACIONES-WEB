@@ -1,12 +1,20 @@
-# Proyecto Integrador U2 - Avance 2
+# Sistema Logístico de Monitoreo
 
-## Sistema Logístico de Monitoreo
+## Proyecto Integrador - Desarrollo de Aplicaciones Web
 
-## Descripción
+Este proyecto corresponde al desarrollo progresivo de un Sistema Logístico de Monitoreo, creado como parte de la asignatura Desarrollo de Aplicaciones Web.
 
-Este proyecto corresponde a la **Semana 6** de la asignatura **Desarrollo de Aplicaciones Web**. Consiste en la mejora de un sitio web desarrollado en las semanas anteriores, incorporando validaciones dinámicas mediante JavaScript y manejo de formularios sin recargar la página.
+El sistema está orientado al seguimiento y administración de unidades de transporte, permitiendo presentar información de vehículos, servicios, clientes, proveedores y facturación mediante una interfaz web moderna y responsiva.
 
-El sistema permite registrar vehículos de una empresa de transporte, validando la información ingresada antes de almacenarla y mostrando los registros de forma dinámica.
+El proyecto ha sido desarrollado progresivamente incorporando HTML5, CSS3, Bootstrap, JavaScript, manipulación del DOM, validaciones dinámicas, renderizado de contenido y posteriormente Python con Flask y Jinja2.
+
+---
+
+## Objetivo del proyecto
+
+Desarrollar una aplicación web que permita representar y administrar información relacionada con operaciones logísticas y transporte, utilizando tecnologías web modernas y una estructura organizada que permita su futura conexión con una base de datos.
+
+---
 
 ## Tecnologías utilizadas
 
@@ -17,52 +25,131 @@ El sistema permite registrar vehículos de una empresa de transporte, validando 
 - Python
 - Flask
 - Jinja2
+- GitHub
+- GitHub Pages
 
-## Funcionalidades implementadas
+---
 
-* Diseño responsivo con Bootstrap.
-* Formulario para registrar vehículos.
-* Validaciones dinámicas en tiempo real utilizando los eventos **input**, **blur** y **submit**.
-* Validación de campos obligatorios.
-* Validación de longitud mínima para la placa y la descripción.
-* Validación de selección del tipo de vehículo.
-* Mensajes dinámicos de éxito y error.
-* Uso de las clases de Bootstrap **is-valid**, **is-invalid**, **alert-success** y **alert-danger**.
-* Manipulación del DOM mediante JavaScript.
-* Registro de vehículos sin recargar la página utilizando **preventDefault()**.
-* Creación dinámica de tarjetas con **createElement()** y **appendChild()**.
-* Eliminación de registros mediante botones y eventos **click**.
-* Contador automático del total de vehículos registrados.
-## Nuevas funcionalidades
+## Desarrollo del proyecto
 
-En esta actualización se reorganizó el proyecto pensando en una futura integración con Flask mediante plantillas reutilizables.
+### Semana 3 - Estructura HTML5
 
-### Mejoras implementadas
+Se desarrolló la estructura inicial del sitio web utilizando HTML5 y etiquetas semánticas.
 
-- Organización de la interfaz mediante secciones reutilizables.
-- Preparación para una futura plantilla `base.html`.
-- Uso de un arreglo (`vehiculos[]`) para almacenar la información.
-- Uso de objetos JavaScript para representar cada vehículo.
-- Renderizado dinámico de tarjetas mediante la función `renderizarVehiculos()`.
-- Implementación de estructuras repetitivas (`forEach`) para mostrar los registros.
-- Uso de estructuras condicionales (`if`) para mostrar mensajes cuando no existen vehículos registrados.
-- Conservación de las validaciones dinámicas desarrolladas en la Semana 6.
-- Posibilidad de registrar y eliminar vehículos sin recargar la página.
-- Diseño responsivo utilizando Bootstrap y CSS personalizado.
+Se incorporaron elementos como:
 
-## Se incorporaron componentes de Bootstrap:
+- `header`
+- `nav`
+- `main`
+- `section`
+- `article`
+- `aside`
+- `footer`
+
+También se desarrollaron las secciones principales del Sistema Logístico de Monitoreo.
+
+---
+
+### Semana 4 - Diseño con Bootstrap y CSS3
+
+Se mejoró la presentación visual del proyecto mediante Bootstrap y CSS3.
+
+Se incorporaron:
 
 - Navbar responsiva.
-- Sistema de rejillas.
-- Cards.
-- Formularios Bootstrap.
-- Alertas.
-- Modal.
-- Spinner.
-- Diseño adaptable.
-## Estructura del proyecto
+- Sistema de grillas.
+- Botones Bootstrap.
+- Tarjetas.
+- Formularios.
+- Imágenes responsivas.
+- Espaciado.
+- Colores.
+- Sombras.
+- Bordes.
+- Efectos visuales.
+- Media queries.
+
+El proyecto fue preparado para visualizarse correctamente en computadoras, tablets y celulares.
+
+---
+
+### Semana 5 - JavaScript, DOM y eventos
+
+Se incorporó JavaScript para agregar funcionalidad dinámica al proyecto.
+
+El sistema permite:
+
+- Registrar vehículos.
+- Mostrar vehículos en pantalla.
+- Contar registros.
+- Eliminar registros.
+- Manipular elementos del DOM.
+- Utilizar `createElement()`.
+- Utilizar `appendChild()`.
+- Utilizar `addEventListener()`.
+- Utilizar `preventDefault()`.
+
+Los registros se muestran sin necesidad de recargar la página.
+
+---
+
+### Semana 6 - Validaciones dinámicas
+
+Se incorporaron validaciones dinámicas al formulario de registro de vehículos.
+
+Se validan:
+
+- Placa del vehículo.
+- Descripción.
+- Tipo de vehículo.
+
+También se implementaron eventos:
+
+- `input`
+- `blur`
+- `change`
+- `submit`
+
+Se utilizan clases de Bootstrap para mostrar visualmente los estados de validación:
+
+- `is-valid`
+- `is-invalid`
+- `alert-success`
+- `alert-danger`
+
+El sistema evita registrar información cuando existen errores en los campos.
+
+---
+
+### Semana 7 - Renderizado dinámico
+
+Se reorganizó el proyecto para utilizar estructuras de datos y renderizado dinámico mediante JavaScript.
+
+Se implementaron:
+
+- Arreglos.
+- Objetos.
+- Funciones.
+- Estructuras repetitivas.
+- Condicionales.
+- Renderizado dinámico.
+- Tarjetas generadas mediante JavaScript.
+
+Los vehículos son almacenados temporalmente en un arreglo y posteriormente renderizados en la interfaz.
+
+También se preparó la estructura del proyecto para una futura migración hacia Flask y Jinja2.
+
+---
+
+### Semana 9 - Implementación de Flask
+
+Se incorporó Python Flask al proyecto.
+
+Se creó una estructura organizada utilizando:
+
 ```text
 app.py
+requirements.txt
 
 templates/
     base.html
@@ -72,26 +159,15 @@ templates/
     proveedores.html
     facturacion.html
 
+    components/
+        navbar.html
+        footer.html
+
 static/
     css/
         style.css
+
     js/
         script.js
+
     img/
-
-## Objetivo del proyecto
-
-Desarrollar una aplicación web interactiva que permita registrar, validar, mostrar, contar y eliminar vehículos de forma dinámica, aplicando JavaScript, manipulación del DOM, eventos y estilos con Bootstrap.
-
-## Autor
-
-**Robert Reyes**
-
-## Asignatura
-
-Desarrollo de Aplicaciones Web
-
-## Publicación
-
-El proyecto se encuentra alojado en **GitHub** y publicado mediante **GitHub Pages**.
-
