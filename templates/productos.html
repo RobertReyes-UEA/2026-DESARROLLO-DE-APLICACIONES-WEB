@@ -1,36 +1,88 @@
 {% extends "base.html" %}
 
 {% block title %}
-Productos
+Productos y Servicios
 {% endblock %}
+
 
 {% block content %}
 
-<h2 class="text-primary mb-4">
+<h2 class="text-primary mb-4 text-center">
+
     Productos y Servicios
+
 </h2>
+
 
 <div class="row">
 
+
 {% for producto in productos %}
 
-    <div class="col-md-4 mb-4">
+
+    <div class="col-md-6 col-lg-3 mb-4">
 
         <div class="card shadow h-100">
 
             <div class="card-body">
 
                 <h5 class="card-title">
+
                     {{ producto.nombre }}
+
                 </h5>
 
-                <p class="card-text">
+
+                <p>
+
                     {{ producto.descripcion }}
+
                 </p>
 
-                <span class="badge bg-primary">
+
+                <p>
+
+                    <strong>Categoría:</strong>
+
                     {{ producto.categoria }}
-                </span>
+
+                </p>
+
+
+                <p>
+
+                    <strong>Precio:</strong>
+
+                    ${{ "%.2f"|format(producto.precio) }}
+
+                </p>
+
+
+                {% if producto.stock > 0 %}
+
+                    <span class="badge bg-success">
+
+                        Disponible
+
+                    </span>
+
+                    <p class="mt-2">
+
+                        Stock:
+                        {{ producto.stock }}
+
+                    </p>
+
+                {% else %}
+
+                    <span class="badge bg-danger">
+
+                        Agotado
+
+                    </span>
+
+                {% endif %}
+
 
             </div>
 
@@ -38,8 +90,32 @@ Productos
 
     </div>
 
+
 {% endfor %}
 
+
 </div>
+
+
+{% if productos|length > 0 %}
+
+<div class="alert alert-success">
+
+    Se encontraron
+    <strong>{{ productos|length }}</strong>
+    servicios registrados.
+
+</div>
+
+{% else %}
+
+<div class="alert alert-warning">
+
+    No existen productos registrados.
+
+</div>
+
+{% endif %}
+
 
 {% endblock %}
