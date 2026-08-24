@@ -4,13 +4,18 @@
 Proveedores
 {% endblock %}
 
+
 {% block content %}
 
-<h2 class="text-primary mb-4">
+<h2 class="text-primary mb-4 text-center">
+
     Proveedores
+
 </h2>
 
+
 <div class="row">
+
 
 {% for proveedor in proveedores %}
 
@@ -21,18 +26,45 @@ Proveedores
         <div class="card-body">
 
             <h5>
+
                 {{ proveedor.empresa }}
+
             </h5>
 
             <p>
+
                 <strong>Servicio:</strong>
+
                 {{ proveedor.servicio }}
+
             </p>
 
             <p>
+
                 <strong>Teléfono:</strong>
+
                 {{ proveedor.telefono }}
+
             </p>
+
+
+            {% if proveedor.estado == "Activo" %}
+
+                <span class="badge bg-success">
+
+                    Proveedor activo
+
+                </span>
+
+            {% else %}
+
+                <span class="badge bg-secondary">
+
+                    Proveedor inactivo
+
+                </span>
+
+            {% endif %}
 
         </div>
 
@@ -42,6 +74,8 @@ Proveedores
 
 {% endfor %}
 
+
 </div>
+
 
 {% endblock %}
