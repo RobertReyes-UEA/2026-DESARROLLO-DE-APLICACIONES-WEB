@@ -4,18 +4,20 @@
 Inicio - Sistema Logístico
 {% endblock %}
 
+
 {% block content %}
 
 <div class="text-center mb-5">
 
     <h2 class="text-primary">
-        Bienvenido al Sistema Logístico
+
+        {{ nombre_sistema|upper }}
+
     </h2>
 
     <p class="lead">
 
-        Plataforma para el control y monitoreo
-        de unidades de transporte.
+        {{ descripcion }}
 
     </p>
 
@@ -23,6 +25,7 @@ Inicio - Sistema Logístico
 
 
 <div class="row">
+
 
     <div class="col-md-6 mb-4">
 
@@ -38,9 +41,17 @@ Inicio - Sistema Logístico
 
                     Permite realizar el seguimiento
                     de las unidades de transporte
-                    y mejorar el control logístico.
+                    en tiempo real.
 
                 </p>
+
+                <a
+                    href="{{ url_for('productos') }}"
+                    class="btn btn-primary">
+
+                    Ver servicios
+
+                </a>
 
             </div>
 
@@ -61,12 +72,18 @@ Inicio - Sistema Logístico
 
                 <p>
 
-                    El sistema permite organizar
-                    información relacionada con
-                    productos, clientes, proveedores
-                    y facturación.
+                    Administración de clientes,
+                    proveedores y facturación.
 
                 </p>
+
+                <a
+                    href="{{ url_for('clientes') }}"
+                    class="btn btn-success">
+
+                    Ver clientes
+
+                </a>
 
             </div>
 
@@ -74,15 +91,18 @@ Inicio - Sistema Logístico
 
     </div>
 
+
 </div>
 
 
 <div class="alert alert-info mt-4">
 
-    Esta versión utiliza Flask y Jinja2.
-    La conexión con base de datos se implementará
-    posteriormente.
+    <strong>Información:</strong>
+
+    Esta aplicación utiliza Flask y Jinja2
+    para generar contenido dinámico.
 
 </div>
+
 
 {% endblock %}
