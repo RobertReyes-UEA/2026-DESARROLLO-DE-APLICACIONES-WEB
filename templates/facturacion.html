@@ -1,114 +1,89 @@
 {% extends "base.html" %}
 
-{% block title %}
-Facturación
-{% endblock %}
-
-
 {% block content %}
 
-<h2 class="text-primary mb-4">
+<div class="container my-5">
 
-    Facturación
+    <h2 class="text-center mb-4">
+        Registro de Facturación
+    </h2>
 
-</h2>
+    <div class="card shadow p-4">
 
+        <form method="POST">
 
-<div class="table-responsive">
+            {{ form.hidden_tag() }}
 
-<table class="table table-bordered table-hover">
+            <div class="mb-3">
+                {{ form.cliente.label(class="form-label") }}
+                {{ form.cliente(class="form-control") }}
 
+                {% for error in form.cliente.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
 
-<thead class="table-dark">
+            <div class="mb-3">
+                {{ form.concepto.label(class="form-label") }}
+                {{ form.concepto(class="form-control") }}
 
-<tr>
+                {% for error in form.concepto.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
 
-    <th>Factura</th>
-    <th>Cliente</th>
-    <th>Total</th>
-    <th>Estado</th>
+            <div class="mb-3">
+                {{ form.total.label(class="form-label") }}
+                {{ form.total(class="form-control") }}
 
-</tr>
+                {% for error in form.total.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
 
-</thead>
+            <div class="mb-3">
+                {{ form.estado.label(class="form-label") }}
+                {{ form.estado(class="form-control") }}
 
+                {% for error in form.estado.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
 
-<tbody>
+            <button class="btn btn-primary">
+                Registrar Factura
+            </button>
 
+        </form>
 
-{% for factura in facturas %}
+    </div>
 
-<tr>
+    <h3 class="mt-5">
+        Facturas registradas
+    </h3>
 
-    <td>
+    {% for factura in facturas %}
 
-        {{ factura.numero|upper }}
+    <div class="card p-3 mt-3 shadow">
 
-    </td>
+        <h5>{{ factura.cliente }}</h5>
 
-    <td>
+        <p>
+            Concepto: {{ factura.concepto }}
+        </p>
 
-        {{ factura.cliente }}
+        <p>
+            Total: ${{ "%.2f"|format(factura.total) }}
+        </p>
 
-    </td>
+        <span class="badge bg-success">
+            {{ factura.estado }}
+        </span>
 
-    <td>
+    </div>
 
-        ${{ "%.2f"|format(factura.total) }}
-
-    </td>
-
-    <td>
-
-
-        {% if factura.estado == "Pagada" %}
-
-            <span class="badge bg-success">
-
-                Pagada
-
-            </span>
-
-        {% else %}
-
-            <span class="badge bg-warning text-dark">
-
-                Pendiente
-
-            </span>
-
-        {% endif %}
-
-
-    </td>
-
-</tr>
-
-{% endfor %}
-
-
-</tbody>
-
-</table>
+    {% endfor %}
 
 </div>
-
-
-{% if facturas|length > 0 %}
-
-<div class="alert alert-info">
-
-    Total de facturas:
-
-    <strong>
-
-        {{ facturas|length }}
-
-    </strong>
-
-</div>
-
-{% endif %}
-
 
 {% endblock %}
