@@ -5,17 +5,10 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>
-
-        {% block title %}
-        Sistema Logístico de Monitoreo
-        {% endblock %}
-
-    </title>
+    <title>Sistema Logístico de Monitoreo</title>
 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -29,50 +22,24 @@
 
 <body>
 
+    {% include "components/navbar.html" %}
 
-<header class="bg-primary text-white text-center p-4">
+    <main>
 
-    <div class="container">
+        {% block content %}
+        {% endblock %}
 
-        <h1>
-            Sistema Logístico de Monitoreo
-        </h1>
+    </main>
 
-        <p>
-            Control y seguimiento de vehículos
-        </p>
+    {% include "components/footer.html" %}
 
-    </div>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
 
-</header>
-
-
-<!-- Componente reutilizable de navegación -->
-
-{% include "components/navbar.html" %}
-
-
-<main class="container py-5">
-
-    {% block content %}
-
-    {% endblock %}
-
-</main>
-
-
-<!-- Componente reutilizable de pie de página -->
-
-{% include "components/footer.html" %}
-
-
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
-
-<script
-    src="{{ url_for('static', filename='js/script.js') }}">
-</script>
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}">
+    </script>
 
 </body>
 
