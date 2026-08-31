@@ -1,6 +1,60 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for, flash
+
+from forms.producto_form import ProductoForm
+from forms.cliente_form import ClienteForm
+from forms.proveedor_form import ProveedorForm
+from forms.facturacion_form import FacturacionForm
+
 
 app = Flask(__name__)
+
+# Clave secreta para Flask-WTF y protección CSRF
+app.config["SECRET_KEY"] = "clave-secreta-sistema-logistico-2026"
+
+
+# ==============================
+# DATOS DEMOSTRATIVOS
+# ==============================
+
+productos = [
+    {
+        "nombre": "Monitoreo GPS",
+        "descripcion": "Seguimiento de vehículos en tiempo real.",
+        "categoria": "Monitoreo",
+        "precio": 50.00
+    },
+    {
+        "nombre": "Sistema de Seguridad",
+        "descripcion": "Control y alertas para unidades de transporte.",
+        "categoria": "Seguridad",
+        "precio": 75.00
+    }
+]
+
+clientes = [
+    {
+        "nombre": "Cervecería Nacional",
+        "correo": "cliente@empresa.com",
+        "telefono": "0991234567"
+    }
+]
+
+proveedores = [
+    {
+        "empresa": "GPS Ecuador",
+        "contacto": "Carlos Pérez",
+        "correo": "ventas@gpsecuador.com"
+    }
+]
+
+facturas = [
+    {
+        "cliente": "Cervecería Nacional",
+        "concepto": "Servicio de monitoreo",
+        "total": 150.00,
+        "estado": "Pagada"
+    }
+]
 
 
 # ==============================
@@ -9,67 +63,43 @@ app = Flask(__name__)
 
 @app.route("/")
 def inicio():
-
-    nombre_sistema = "Sistema Logístico de Monitoreo"
-
-    descripcion = (
-        "Plataforma para el control, seguimiento y "
-        "administración de unidades de transporte."
-    )
-
     return render_template(
         "index.html",
-        nombre_sistema=nombre_sistema,
-        descripcion=descripcion
+        nombre_sistema="Sistema Logístico de Monitoreo"
     )
 
 
 # ==============================
-# PRODUCTOS / SERVICIOS
+# PRODUCTOS
 # ==============================
 
-@app.route("/productos")
-def productos():
+@app.route("/productos", methods=["GET", "POST"])
+def productos_ruta():
 
-    productos = [
+    form = ProductoForm()
 
-        {
-            "nombre": "Monitoreo GPS",
-            "descripcion": "Seguimiento de vehículos en tiempo real.",
-            "categoria": "Monitoreo",
-            "precio": 50.00,
-            "stock": 10
-        },
+    if form.validate_on_submit():
 
-        {
-            "nombre": "Control de rutas",
-            "descripcion": "Seguimiento y control de recorridos.",
-            "categoria": "Logística",
-            "precio": 75.00,
-            "stock": 5
-        },
-
-        {
-            "nombre": "Alertas de seguridad",
-            "descripcion": "Sistema de alertas para unidades.",
-            "categoria": "Seguridad",
-            "precio": 35.00,
-            "stock": 0
-        },
-
-        {
-            "nombre": "Reporte logístico",
-            "descripcion": "Generación de reportes de operaciones.",
-            "categoria": "Reportes",
-            "precio": 25.00,
-            "stock": 8
+        nuevo_producto = {
+            "nombre": form.nombre.data,
+            "descripcion": form.descripcion.data,
+            "categoria": form.categoria.data,
+            "precio": form.precio.data
         }
 
-    ]
+        productos.append(nuevo_producto)
+
+        flash(
+            "Producto registrado correctamente.",
+            "success"
+        )
+
+        return redirect(url_for("productos_ruta"))
 
     return render_template(
         "productos.html",
-        productos=productos
+        productos=productos,
+        form=form
     )
 
 
@@ -77,37 +107,33 @@ def productos():
 # CLIENTES
 # ==============================
 
-@app.route("/clientes")
-def clientes():
+@app.route("/clientes", methods=["GET", "POST"])
+def clientes_ruta():
 
-    clientes = [
+    form = ClienteForm()
 
-        {
-            "nombre": "Empresa ABC",
-            "correo": "empresaabc@gmail.com",
-            "telefono": "0991111111",
-            "estado": "Activo"
-        },
+    if form.validate_on_submit():
 
-        {
-            "nombre": "Transportes Costa",
-            "correo": "transportescosta@gmail.com",
-            "telefono": "0982222222",
-            "estado": "Activo"
-        },
-
-        {
-            "nombre": "Logística Peninsular",
-            "correo": "logisticapeninsular@gmail.com",
-            "telefono": "0973333333",
-            "estado": "Inactivo"
+        nuevo_cliente = {
+            "nombre": form.nombre.data,
+            "correo": form.correo.data,
+            "telefono": form.telefono.data,
+            "direccion": form.direccion.data
         }
 
-    ]
+        clientes.append(nuevo_cliente)
+
+        flash(
+            "Cliente registrado correctamente.",
+            "success"
+        )
+
+        return redirect(url_for("clientes_ruta"))
 
     return render_template(
         "clientes.html",
-        clientes=clientes
+        clientes=clientes,
+        form=form
     )
 
 
@@ -115,37 +141,34 @@ def clientes():
 # PROVEEDORES
 # ==============================
 
-@app.route("/proveedores")
-def proveedores():
+@app.route("/proveedores", methods=["GET", "POST"])
+def proveedores_ruta():
 
-    proveedores = [
+    form = ProveedorForm()
 
-        {
-            "empresa": "GPS Ecuador",
-            "servicio": "Equipos GPS",
-            "telefono": "0961111111",
-            "estado": "Activo"
-        },
+    if form.validate_on_submit():
 
-        {
-            "empresa": "Seguridad Vehicular",
-            "servicio": "Sistemas de seguridad",
-            "telefono": "0952222222",
-            "estado": "Activo"
-        },
-
-        {
-            "empresa": "Tecnología Logística",
-            "servicio": "Software de monitoreo",
-            "telefono": "0943333333",
-            "estado": "Inactivo"
+        nuevo_proveedor = {
+            "empresa": form.empresa.data,
+            "contacto": form.contacto.data,
+            "correo": form.correo.data,
+            "telefono": form.telefono.data,
+            "direccion": form.direccion.data
         }
 
-    ]
+        proveedores.append(nuevo_proveedor)
+
+        flash(
+            "Proveedor registrado correctamente.",
+            "success"
+        )
+
+        return redirect(url_for("proveedores_ruta"))
 
     return render_template(
         "proveedores.html",
-        proveedores=proveedores
+        proveedores=proveedores,
+        form=form
     )
 
 
@@ -153,42 +176,38 @@ def proveedores():
 # FACTURACIÓN
 # ==============================
 
-@app.route("/facturacion")
-def facturacion():
+@app.route("/facturacion", methods=["GET", "POST"])
+def facturacion_ruta():
 
-    facturas = [
+    form = FacturacionForm()
 
-        {
-            "numero": "FAC-001",
-            "cliente": "Empresa ABC",
-            "total": 150.00,
-            "estado": "Pagada"
-        },
+    if form.validate_on_submit():
 
-        {
-            "numero": "FAC-002",
-            "cliente": "Transportes Costa",
-            "total": 220.00,
-            "estado": "Pendiente"
-        },
-
-        {
-            "numero": "FAC-003",
-            "cliente": "Logística Peninsular",
-            "total": 180.00,
-            "estado": "Pagada"
+        nueva_factura = {
+            "cliente": form.cliente.data,
+            "concepto": form.concepto.data,
+            "total": form.total.data,
+            "estado": form.estado.data
         }
 
-    ]
+        facturas.append(nueva_factura)
+
+        flash(
+            "Factura registrada correctamente.",
+            "success"
+        )
+
+        return redirect(url_for("facturacion_ruta"))
 
     return render_template(
         "facturacion.html",
-        facturas=facturas
+        facturas=facturas,
+        form=form
     )
 
 
 # ==============================
-# EJECUTAR FLASK
+# EJECUTAR APLICACIÓN
 # ==============================
 
 if __name__ == "__main__":
