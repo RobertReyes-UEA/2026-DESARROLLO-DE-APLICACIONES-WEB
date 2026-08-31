@@ -1,173 +1,509 @@
 # Sistema Logístico de Monitoreo
 
-## Proyecto Integrador - Desarrollo de Aplicaciones Web
+## Proyecto Integrador – Desarrollo de Aplicaciones Web
 
-Este proyecto corresponde al desarrollo progresivo de un Sistema Logístico de Monitoreo, creado como parte de la asignatura Desarrollo de Aplicaciones Web.
-
-El sistema está orientado al seguimiento y administración de unidades de transporte, permitiendo presentar información de vehículos, servicios, clientes, proveedores y facturación mediante una interfaz web moderna y responsiva.
-
-El proyecto ha sido desarrollado progresivamente incorporando HTML5, CSS3, Bootstrap, JavaScript, manipulación del DOM, validaciones dinámicas, renderizado de contenido y posteriormente Python con Flask y Jinja2.
+**Estudiante:** Robert Reyes
+**Asignatura:** Desarrollo de Aplicaciones Web
+**Año:** 2026
+**Proyecto:** Sistema Logístico de Monitoreo
 
 ---
 
-## Objetivo del proyecto
+## Descripción del proyecto
 
-Desarrollar una aplicación web que permita representar y administrar información relacionada con operaciones logísticas y transporte, utilizando tecnologías web modernas y una estructura organizada que permita su futura conexión con una base de datos.
+El **Sistema Logístico de Monitoreo** es un proyecto web desarrollado para facilitar la administración y supervisión de vehículos de transporte.
+
+La aplicación busca mejorar el control de las operaciones logísticas mediante el registro y gestión de información relacionada con vehículos, productos, clientes, proveedores y facturación.
+
+El proyecto se ha desarrollado progresivamente utilizando **HTML5, CSS3, Bootstrap, JavaScript, Flask, Jinja2, Flask-WTF y WTForms**.
+
+---
+
+## Objetivo general
+
+Desarrollar una aplicación web para apoyar la gestión de operaciones logísticas, incorporando una interfaz responsiva, formularios con validaciones, contenido dinámico y una estructura preparada para futuras conexiones con una base de datos.
 
 ---
 
 ## Tecnologías utilizadas
 
-- HTML5
-- CSS3
-- JavaScript
-- Bootstrap 5
-- Python
-- Flask
-- Jinja2
-- GitHub
-- GitHub Pages
+* HTML5
+* CSS3
+* Bootstrap 5
+* JavaScript
+* Python
+* Flask
+* Jinja2
+* Flask-WTF
+* WTForms
+* GitHub
+* GitHub Pages
 
 ---
 
-## Desarrollo del proyecto
+## Funcionalidades desarrolladas
 
-### Semana 3 - Estructura HTML5
+### Interfaz web
 
-Se desarrolló la estructura inicial del sitio web utilizando HTML5 y etiquetas semánticas.
+* Página principal informativa.
+* Encabezado del sistema.
+* Menú de navegación responsivo.
+* Sección Inicio.
+* Sección Quiénes Somos.
+* Sección Servicios.
+* Sección Contacto.
+* Información complementaria.
+* Diseño adaptable para computadora, tablet y celular.
 
-Se incorporaron elementos como:
+### JavaScript
 
-- `header`
-- `nav`
-- `main`
-- `section`
-- `article`
-- `aside`
-- `footer`
+* Registro dinámico de información.
+* Manipulación del DOM.
+* Uso de arreglos y objetos.
+* Renderizado dinámico.
+* Uso de `createElement()`.
+* Uso de `appendChild()`.
+* Eventos mediante `addEventListener()`.
+* Eliminación de registros.
+* Contador de registros.
+* Validaciones dinámicas.
+* Mensajes de error y éxito.
 
-También se desarrollaron las secciones principales del Sistema Logístico de Monitoreo.
+### Validaciones
 
----
+El proyecto incorpora validaciones para evitar el registro de información incorrecta.
 
-### Semana 4 - Diseño con Bootstrap y CSS3
+Se utilizan:
 
-Se mejoró la presentación visual del proyecto mediante Bootstrap y CSS3.
+* `input`
+* `blur`
+* `submit`
+* `preventDefault()`
+* `is-valid`
+* `is-invalid`
+* `alert-success`
+* `alert-danger`
 
-Se incorporaron:
-
-- Navbar responsiva.
-- Sistema de grillas.
-- Botones Bootstrap.
-- Tarjetas.
-- Formularios.
-- Imágenes responsivas.
-- Espaciado.
-- Colores.
-- Sombras.
-- Bordes.
-- Efectos visuales.
-- Media queries.
-
-El proyecto fue preparado para visualizarse correctamente en computadoras, tablets y celulares.
-
----
-
-### Semana 5 - JavaScript, DOM y eventos
-
-Se incorporó JavaScript para agregar funcionalidad dinámica al proyecto.
-
-El sistema permite:
-
-- Registrar vehículos.
-- Mostrar vehículos en pantalla.
-- Contar registros.
-- Eliminar registros.
-- Manipular elementos del DOM.
-- Utilizar `createElement()`.
-- Utilizar `appendChild()`.
-- Utilizar `addEventListener()`.
-- Utilizar `preventDefault()`.
-
-Los registros se muestran sin necesidad de recargar la página.
+También se validan campos obligatorios, longitud mínima, categorías y otros datos ingresados por el usuario.
 
 ---
 
-### Semana 6 - Validaciones dinámicas
+## Flask
 
-Se incorporaron validaciones dinámicas al formulario de registro de vehículos.
+El proyecto fue preparado para trabajar con Python y Flask.
 
-Se validan:
-
-- Placa del vehículo.
-- Descripción.
-- Tipo de vehículo.
-
-También se implementaron eventos:
-
-- `input`
-- `blur`
-- `change`
-- `submit`
-
-Se utilizan clases de Bootstrap para mostrar visualmente los estados de validación:
-
-- `is-valid`
-- `is-invalid`
-- `alert-success`
-- `alert-danger`
-
-El sistema evita registrar información cuando existen errores en los campos.
-
----
-
-### Semana 7 - Renderizado dinámico
-
-Se reorganizó el proyecto para utilizar estructuras de datos y renderizado dinámico mediante JavaScript.
-
-Se implementaron:
-
-- Arreglos.
-- Objetos.
-- Funciones.
-- Estructuras repetitivas.
-- Condicionales.
-- Renderizado dinámico.
-- Tarjetas generadas mediante JavaScript.
-
-Los vehículos son almacenados temporalmente en un arreglo y posteriormente renderizados en la interfaz.
-
-También se preparó la estructura del proyecto para una futura migración hacia Flask y Jinja2.
-
----
-
-### Semana 9 - Implementación de Flask
-
-Se incorporó Python Flask al proyecto.
-
-Se creó una estructura organizada utilizando:
+El archivo principal del backend es:
 
 ```text
 app.py
-requirements.txt
+```
 
+Las principales rutas implementadas son:
+
+```text
+/
+ /productos
+ /clientes
+ /proveedores
+ /facturacion
+```
+
+Cada ruta utiliza `render_template()` para mostrar las páginas correspondientes.
+
+---
+
+## Estructura del proyecto
+
+```text
+Sistema-Logistico-Monitoreo/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+│
+├── forms/
+│   ├── __init__.py
+│   ├── producto_form.py
+│   ├── cliente_form.py
+│   ├── proveedor_form.py
+│   └── facturacion_form.py
+│
+├── templates/
+│   ├── base.html
+│   ├── index.html
+│   ├── productos.html
+│   ├── clientes.html
+│   ├── proveedores.html
+│   ├── facturacion.html
+│   │
+│   └── components/
+│       ├── navbar.html
+│       └── footer.html
+│
+└── static/
+    │
+    ├── css/
+    │   └── style.css
+    │
+    ├── js/
+    │   └── script.js
+    │
+    └── img/
+```
+
+---
+
+## Plantillas Jinja2
+
+Para evitar repetir código HTML se utiliza una plantilla principal:
+
+```text
+base.html
+```
+
+Las páginas internas utilizan herencia mediante:
+
+```jinja2
+{% extends "base.html" %}
+```
+
+El contenido de cada página se incorpora mediante:
+
+```jinja2
+{% block content %}
+{% endblock %}
+```
+
+Esto permite reutilizar el encabezado, menú, Bootstrap, archivos CSS, JavaScript y pie de página.
+
+---
+
+## Formularios Flask-WTF
+
+El proyecto incorpora formularios independientes utilizando:
+
+```python
+FlaskForm
+```
+
+Los formularios se encuentran en:
+
+```text
+forms/
+```
+
+Los módulos implementados son:
+
+* ProductoForm
+* ClienteForm
+* ProveedorForm
+* FacturacionForm
+
+Se utilizan validadores de WTForms como:
+
+```python
+DataRequired()
+Length()
+NumberRange()
+Email()
+```
+
+Los formularios utilizan métodos `GET` y `POST` y validación mediante:
+
+```python
+form.validate_on_submit()
+```
+
+---
+
+## Protección CSRF
+
+Los formularios utilizan protección CSRF mediante Flask-WTF.
+
+La aplicación configura una clave secreta mediante:
+
+```python
+app.config["SECRET_KEY"] = "clave-secreta-sistema-logistico-2026"
+```
+
+Los formularios incluyen:
+
+```jinja2
+{{ form.hidden_tag() }}
+```
+
+Esto permite incorporar el token de seguridad CSRF en los formularios.
+
+---
+
+## Datos demostrativos
+
+En esta etapa del proyecto los datos son demostrativos y se almacenan temporalmente en estructuras de Python.
+
+Se utilizan datos de ejemplo para:
+
+* Productos.
+* Clientes.
+* Proveedores.
+* Facturas.
+
+La conexión con una base de datos será incorporada en una etapa posterior del proyecto.
+
+---
+
+## Ejemplo de producto
+
+```text
+Nombre: Monitoreo GPS
+Descripción: Seguimiento de vehículos en tiempo real
+Categoría: Monitoreo
+Precio: $50.00
+```
+
+---
+
+## Ejemplo de cliente
+
+```text
+Cliente: Cervecería Nacional
+Correo: cliente@empresa.com
+Teléfono: 0991234567
+```
+
+---
+
+## Ejemplo de proveedor
+
+```text
+Empresa: GPS Ecuador
+Contacto: Carlos Pérez
+Correo: ventas@gpsecuador.com
+```
+
+---
+
+## Ejemplo de factura
+
+```text
+Cliente: Cervecería Nacional
+Concepto: Servicio de monitoreo
+Total: $150.00
+Estado: Pagada
+```
+
+---
+
+## Organización por semanas
+
+### Semana 4
+
+Se desarrolló la interfaz principal utilizando:
+
+* HTML5.
+* CSS3.
+* Bootstrap.
+* Diseño responsive.
+* Navbar.
+* Formularios.
+* Cards.
+* Sistema de grillas.
+
+### Semana 5
+
+Se incorporó JavaScript para:
+
+* Registrar información.
+* Mostrar registros sin recargar.
+* Contar registros.
+* Eliminar registros.
+* Manipular el DOM.
+* Manejar eventos.
+
+### Semana 6
+
+Se incorporaron validaciones dinámicas mediante JavaScript.
+
+Se validaron:
+
+* Campos obligatorios.
+* Longitud mínima.
+* Categorías.
+* Mensajes de error.
+* Mensajes de éxito.
+
+### Semana 7
+
+Se incorporó el renderizado dinámico mediante:
+
+* Arreglos.
+* Objetos.
+* Funciones.
+* Estructuras repetitivas.
+* Condicionales.
+
+También se preparó la estructura para una futura integración con Flask.
+
+### Semana 9
+
+Se incorporó Flask y se organizó el proyecto mediante:
+
+```text
 templates/
-    base.html
-    index.html
-    productos.html
-    clientes.html
-    proveedores.html
-    facturacion.html
-
-    components/
-        navbar.html
-        footer.html
-
 static/
-    css/
-        style.css
+app.py
+```
 
-    js/
-        script.js
+Se implementaron las rutas:
 
-    img/
+```text
+/
+ /productos
+ /clientes
+ /proveedores
+ /facturacion
+```
+
+También se incorporó la herencia de plantillas mediante Jinja2.
+
+### Semana 11
+
+Se incorporaron formularios utilizando:
+
+* Flask-WTF.
+* WTForms.
+* `FlaskForm`.
+* `DataRequired()`.
+* `Length()`.
+* `NumberRange()`.
+* `Email()`.
+
+También se implementaron:
+
+* Formularios independientes.
+* Métodos GET y POST.
+* `validate_on_submit()`.
+* Mensajes mediante `flash()`.
+* Protección CSRF.
+* `SECRET_KEY`.
+
+---
+
+## Ejecución del proyecto Flask
+
+Para ejecutar el proyecto localmente se debe instalar Python y posteriormente Flask.
+
+Instalación de dependencias:
+
+```bash
+pip install -r requirements.txt
+```
+
+También puede instalarse Flask-WTF directamente:
+
+```bash
+pip install flask-wtf
+```
+
+Para iniciar la aplicación:
+
+```bash
+python app.py
+```
+
+La aplicación estará disponible en:
+
+```text
+http://127.0.0.1:5000
+```
+
+---
+
+## Rutas disponibles
+
+Página principal:
+
+```text
+http://127.0.0.1:5000/
+```
+
+Productos:
+
+```text
+http://127.0.0.1:5000/productos
+```
+
+Clientes:
+
+```text
+http://127.0.0.1:5000/clientes
+```
+
+Proveedores:
+
+```text
+http://127.0.0.1:5000/proveedores
+```
+
+Facturación:
+
+```text
+http://127.0.0.1:5000/facturacion
+```
+
+---
+
+## GitHub
+
+El código fuente del proyecto se encuentra alojado en GitHub.
+
+El repositorio contiene:
+
+* Código HTML.
+* Código CSS.
+* Código JavaScript.
+* Código Python.
+* Plantillas Jinja2.
+* Formularios Flask-WTF.
+* Archivos de configuración.
+* Documentación del proyecto.
+
+---
+
+## GitHub Pages
+
+GitHub Pages se utiliza para publicar la parte frontend del proyecto.
+
+Debido a que GitHub Pages no ejecuta aplicaciones Python/Flask, las rutas del backend Flask se prueban localmente mediante:
+
+```text
+http://127.0.0.1:5000
+```
+
+La publicación de GitHub Pages permite visualizar la interfaz web desarrollada en las etapas anteriores.
+
+---
+
+## Próximas etapas
+
+En las siguientes etapas se podrá incorporar:
+
+* Base de datos.
+* Persistencia de información.
+* CRUD completo.
+* Autenticación de usuarios.
+* API REST.
+* Conexión entre Flask y base de datos.
+* Sistema de monitoreo de vehículos.
+* Gestión de información logística.
+
+---
+
+## Autor
+
+**Robert Reyes**
+
+Proyecto desarrollado para la asignatura:
+
+**Desarrollo de Aplicaciones Web**
+
+**2026**
