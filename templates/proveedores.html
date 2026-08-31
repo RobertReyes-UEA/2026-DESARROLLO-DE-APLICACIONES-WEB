@@ -1,81 +1,94 @@
 {% extends "base.html" %}
 
-{% block title %}
-Proveedores
-{% endblock %}
-
-
 {% block content %}
 
-<h2 class="text-primary mb-4 text-center">
+<div class="container my-5">
 
-    Proveedores
+    <h2 class="text-center mb-4">
+        Registro de Proveedores
+    </h2>
 
-</h2>
+    <div class="card shadow p-4">
 
+        <form method="POST">
 
-<div class="row">
+            {{ form.hidden_tag() }}
 
+            <div class="mb-3">
+                {{ form.empresa.label(class="form-label") }}
+                {{ form.empresa(class="form-control") }}
 
-{% for proveedor in proveedores %}
+                {% for error in form.empresa.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
 
-<div class="col-md-4 mb-4">
+            <div class="mb-3">
+                {{ form.contacto.label(class="form-label") }}
+                {{ form.contacto(class="form-control") }}
 
-    <div class="card shadow h-100">
+                {% for error in form.contacto.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
 
-        <div class="card-body">
+            <div class="mb-3">
+                {{ form.correo.label(class="form-label") }}
+                {{ form.correo(class="form-control") }}
 
-            <h5>
+                {% for error in form.correo.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
 
-                {{ proveedor.empresa }}
+            <div class="mb-3">
+                {{ form.telefono.label(class="form-label") }}
+                {{ form.telefono(class="form-control") }}
 
-            </h5>
+                {% for error in form.telefono.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
 
-            <p>
+            <div class="mb-3">
+                {{ form.direccion.label(class="form-label") }}
+                {{ form.direccion(class="form-control") }}
 
-                <strong>Servicio:</strong>
+                {% for error in form.direccion.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
 
-                {{ proveedor.servicio }}
+            <button class="btn btn-success">
+                Registrar Proveedor
+            </button>
 
-            </p>
-
-            <p>
-
-                <strong>Teléfono:</strong>
-
-                {{ proveedor.telefono }}
-
-            </p>
-
-
-            {% if proveedor.estado == "Activo" %}
-
-                <span class="badge bg-success">
-
-                    Proveedor activo
-
-                </span>
-
-            {% else %}
-
-                <span class="badge bg-secondary">
-
-                    Proveedor inactivo
-
-                </span>
-
-            {% endif %}
-
-        </div>
+        </form>
 
     </div>
 
+    <h3 class="mt-5">
+        Proveedores registrados
+    </h3>
+
+    {% for proveedor in proveedores %}
+
+    <div class="card p-3 mt-3 shadow">
+
+        <h5>{{ proveedor.empresa }}</h5>
+
+        <p>
+            Contacto: {{ proveedor.contacto }}
+        </p>
+
+        <p>
+            Correo: {{ proveedor.correo }}
+        </p>
+
+    </div>
+
+    {% endfor %}
+
 </div>
-
-{% endfor %}
-
-
-</div>
-
 
 {% endblock %}
