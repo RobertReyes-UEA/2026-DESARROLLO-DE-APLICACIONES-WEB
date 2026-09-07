@@ -1,12 +1,13 @@
+```python
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SelectField, FloatField
+from wtforms import StringField, TextAreaField, SelectField, FloatField, SubmitField
 from wtforms.validators import DataRequired, Length, NumberRange
 
 
 class ProductoForm(FlaskForm):
 
     nombre = StringField(
-        "Nombre del producto",
+        "Nombre del Producto",
         validators=[
             DataRequired(message="El nombre es obligatorio."),
             Length(
@@ -24,7 +25,7 @@ class ProductoForm(FlaskForm):
             Length(
                 min=10,
                 max=300,
-                message="La descripción debe tener entre 10 y 300 caracteres."
+                message="La descripción debe tener al menos 10 caracteres."
             )
         ]
     )
@@ -36,7 +37,7 @@ class ProductoForm(FlaskForm):
             ("Monitoreo", "Monitoreo"),
             ("GPS", "GPS"),
             ("Seguridad", "Seguridad"),
-            ("Logística", "Logística")
+            ("Mantenimiento", "Mantenimiento")
         ],
         validators=[
             DataRequired(message="Debe seleccionar una categoría.")
@@ -53,3 +54,6 @@ class ProductoForm(FlaskForm):
             )
         ]
     )
+
+    submit = SubmitField("Registrar Producto")
+```
